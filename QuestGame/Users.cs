@@ -15,6 +15,7 @@ namespace QuestGame {
         public string City { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
+        public byte[] Photo { get; set; }
         public string Password { get; set; }
 
         public override string ToString() {

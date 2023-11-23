@@ -33,19 +33,73 @@ namespace QuestGame {
                     "City NVARCHAR(50) NOT NULL," +
                     "Phone NVARCHAR(50) NOT NULL," +
                     "Email NVARCHAR(50) NOT NULL," +
+                    "Photo VARBINARY (MAX), " +
                     "Password NVARCHAR(50) NOT NULL);";
                 SqlCommand createTable = new SqlCommand(queryTable, conn);
                 createTable.ExecuteNonQuery();
             }
         }
 
-        public static int AddUser(Users user) {
-            using(var conn = new SqlConnection(connectionString)) {
+        public static void AddUser(Users user) {
+            using(SqlConnection conn = new SqlConnection(connectionString)) {
                 conn.Open();
-                string queryAddUser = $"INSERT INTO RegistrationTable VALUES ('{user.FirstName}', '{user.LastNname}', '{user.MiddleName}','{user.Gender}', '{user.BirthdayToUnixTimeStamp()}', '{user.City}', '{user.Phone}', '{user.Email}', '{user.Password}')";
+                string queryAddUser = $"INSERT INTO RegistrationTable VALUES (N'{user.FirstName}', N'{user.LastNname}', N'{user.MiddleName}', N'{user.Gender}', N'{user.BirthdayToUnixTimeStamp()}', N'{user.City}', N'{user.Phone}', N'{user.Email}', '{user.Photo}', N'{user.Password}')";
+                //RegistrationForm registration = new RegistrationForm();
                 SqlCommand insertUser = new SqlCommand(queryAddUser, conn);
-                return insertUser.ExecuteNonQuery();   
+                insertUser.ExecuteNonQuery();   
             }
+        }
+
+        public static void SearchUser() {
+            using (SqlConnection conn = new SqlConnection(connectionString)) {
+                conn.Open();
+                string querySearchUser = "SELECT FirstName + LastName + MiddleName AS FullName FROM RegistrationTable";
+                SqlCommand searchUser = new SqlCommand(querySearchUser, conn);
+                searchUser.ExecuteNonQuery();
+            }
+        }
+
+        public static List<Users> ShowAllUsers() {
+            List<Users> users = new List<Users>();
+            using(SqlConnection conn = new SqlConnection(connectionString)) {
+                conn.Open();
+                string getUsers = "SELECT * FROM RegistrationTable";
+                SqlCommand queryGetUsers = new SqlCommand(getUsers, conn);
+                using(SqlDataReader reader = queryGetUsers.ExecuteReader()) {
+                    if(reader.HasRows) {
+                        while(reader.Read()) {
+                            Users user = new Users();
+                            user.Id = reader.GetInt32(0);
+                            user.FirstName = reader.GetString(1);
+                            user.LastNname = reader.GetString(2);
+                            user.MiddleName = reader.GetString(3);
+                            user.Gender = reader.GetString(4);
+                            user.SetBirthdayfromUTS(reader.GetInt32(5));
+                            user.City = reader.GetString(6);
+                            user.Phone = reader.GetString(7);
+                            user.Email = reader.GetString(8);
+                            user.Password = reader.GetString(9);
+                            users.Add(user);
+                        }
+                    }
+                }
+            }
+            return users;
+        }
+
+        public static List<Users> GetCartUserInfo() {
+            List<Users> users = new List<Users>();
+            using( SqlConnection conn = new SqlConnection(connectionString) ) {
+                conn.Open();
+                string queryCartUserInfo = "";
+                SqlCommand selectCartUserInfo = new SqlCommand(queryCartUserInfo, conn);
+                using(SqlDataReader readInfo = selectCartUserInfo.ExecuteReader()) {
+                    if(readInfo.HasRows) {
+                        
+                    }
+                }
+            }
+            return users;
         }
     }
 }

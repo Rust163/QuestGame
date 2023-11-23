@@ -23,9 +23,10 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrationForm));
             firstNameTextBox = new TextBox();
             lastNameTextBox = new TextBox();
-            middleNameTtextBox = new TextBox();
+            middleNameTextBox = new TextBox();
             groupBox1 = new GroupBox();
             noGenderRadioButton = new RadioButton();
             womanRadioButton = new RadioButton();
@@ -56,9 +57,14 @@
             createTableToolStripMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
+            registrationPictureBox1 = new PictureBox();
+            label10 = new Label();
+            button1 = new Button();
+            button2 = new Button();
             groupBox1.SuspendLayout();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)registrationPictureBox1).BeginInit();
             SuspendLayout();
             // 
             // firstNameTextBox
@@ -75,12 +81,12 @@
             lastNameTextBox.Size = new Size(314, 23);
             lastNameTextBox.TabIndex = 1;
             // 
-            // middleNameTtextBox
+            // middleNameTextBox
             // 
-            middleNameTtextBox.Location = new Point(38, 148);
-            middleNameTtextBox.Name = "middleNameTtextBox";
-            middleNameTtextBox.Size = new Size(314, 23);
-            middleNameTtextBox.TabIndex = 2;
+            middleNameTextBox.Location = new Point(38, 148);
+            middleNameTextBox.Name = "middleNameTextBox";
+            middleNameTextBox.Size = new Size(314, 23);
+            middleNameTextBox.TabIndex = 2;
             // 
             // groupBox1
             // 
@@ -161,14 +167,14 @@
             // 
             // passwordTextBox
             // 
-            passwordTextBox.Location = new Point(38, 433);
+            passwordTextBox.Location = new Point(38, 681);
             passwordTextBox.Name = "passwordTextBox";
             passwordTextBox.Size = new Size(314, 23);
             passwordTextBox.TabIndex = 8;
             // 
             // repeatPasswordTextBox
             // 
-            repeatPasswordTextBox.Location = new Point(38, 477);
+            repeatPasswordTextBox.Location = new Point(38, 725);
             repeatPasswordTextBox.Name = "repeatPasswordTextBox";
             repeatPasswordTextBox.Size = new Size(314, 23);
             repeatPasswordTextBox.TabIndex = 9;
@@ -230,7 +236,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(38, 415);
+            label7.Location = new Point(38, 663);
             label7.Name = "label7";
             label7.Size = new Size(93, 15);
             label7.TabIndex = 16;
@@ -239,7 +245,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(38, 459);
+            label8.Location = new Point(38, 707);
             label8.Name = "label8";
             label8.Size = new Size(109, 15);
             label8.TabIndex = 17;
@@ -248,7 +254,7 @@
             // isNewsCheckBox
             // 
             isNewsCheckBox.AutoSize = true;
-            isNewsCheckBox.Location = new Point(38, 509);
+            isNewsCheckBox.Location = new Point(38, 757);
             isNewsCheckBox.Name = "isNewsCheckBox";
             isNewsCheckBox.Size = new Size(127, 19);
             isNewsCheckBox.TabIndex = 18;
@@ -257,7 +263,7 @@
             // 
             // RegButton
             // 
-            RegButton.Location = new Point(38, 546);
+            RegButton.Location = new Point(38, 794);
             RegButton.Name = "RegButton";
             RegButton.Size = new Size(134, 33);
             RegButton.TabIndex = 19;
@@ -267,7 +273,7 @@
             // 
             // backFormRegButton
             // 
-            backFormRegButton.Location = new Point(218, 546);
+            backFormRegButton.Location = new Point(218, 794);
             backFormRegButton.Name = "backFormRegButton";
             backFormRegButton.Size = new Size(134, 33);
             backFormRegButton.TabIndex = 20;
@@ -311,26 +317,26 @@
             // createDataBaseToolStripMenuItem
             // 
             createDataBaseToolStripMenuItem.Name = "createDataBaseToolStripMenuItem";
-            createDataBaseToolStripMenuItem.Size = new Size(180, 22);
+            createDataBaseToolStripMenuItem.Size = new Size(162, 22);
             createDataBaseToolStripMenuItem.Text = "Create Data Base";
             createDataBaseToolStripMenuItem.Click += createDataBaseToolStripMenuItem_Click;
             // 
             // toolStripMenuItem1
             // 
             toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(177, 6);
+            toolStripMenuItem1.Size = new Size(159, 6);
             // 
             // createTableToolStripMenuItem
             // 
             createTableToolStripMenuItem.Name = "createTableToolStripMenuItem";
-            createTableToolStripMenuItem.Size = new Size(180, 22);
+            createTableToolStripMenuItem.Size = new Size(162, 22);
             createTableToolStripMenuItem.Text = "Create Table";
             createTableToolStripMenuItem.Click += createTableToolStripMenuItem_Click;
             // 
             // statusStrip1
             // 
             statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1 });
-            statusStrip1.Location = new Point(0, 589);
+            statusStrip1.Location = new Point(0, 842);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(394, 22);
             statusStrip1.TabIndex = 24;
@@ -342,12 +348,55 @@
             toolStripStatusLabel1.Size = new Size(118, 17);
             toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
+            // registrationPictureBox1
+            // 
+            registrationPictureBox1.BackColor = Color.WhiteSmoke;
+            registrationPictureBox1.BackgroundImage = (Image)resources.GetObject("registrationPictureBox1.BackgroundImage");
+            registrationPictureBox1.BackgroundImageLayout = ImageLayout.Center;
+            registrationPictureBox1.Location = new Point(38, 440);
+            registrationPictureBox1.Name = "registrationPictureBox1";
+            registrationPictureBox1.Size = new Size(187, 183);
+            registrationPictureBox1.TabIndex = 25;
+            registrationPictureBox1.TabStop = false;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(38, 419);
+            label10.Name = "label10";
+            label10.Size = new Size(35, 15);
+            label10.TabIndex = 26;
+            label10.Text = "Фото";
+            // 
+            // button1
+            // 
+            button1.Location = new Point(38, 629);
+            button1.Name = "button1";
+            button1.Size = new Size(127, 23);
+            button1.TabIndex = 27;
+            button1.Text = "Выбрать фото";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += loadPhotoButton_Click;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(225, 629);
+            button2.Name = "button2";
+            button2.Size = new Size(127, 23);
+            button2.TabIndex = 28;
+            button2.Text = "Загрузить фото";
+            button2.UseVisualStyleBackColor = true;
+            // 
             // RegistrationForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SeaGreen;
-            ClientSize = new Size(394, 611);
+            ClientSize = new Size(394, 864);
+            Controls.Add(button2);
+            Controls.Add(button1);
+            Controls.Add(label10);
+            Controls.Add(registrationPictureBox1);
             Controls.Add(statusStrip1);
             Controls.Add(label9);
             Controls.Add(phoneNumberMaskedTextBox);
@@ -369,7 +418,7 @@
             Controls.Add(cityComboBox);
             Controls.Add(birthdayDateTimePicker);
             Controls.Add(groupBox1);
-            Controls.Add(middleNameTtextBox);
+            Controls.Add(middleNameTextBox);
             Controls.Add(lastNameTextBox);
             Controls.Add(firstNameTextBox);
             Controls.Add(menuStrip1);
@@ -382,6 +431,7 @@
             menuStrip1.PerformLayout();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)registrationPictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -390,7 +440,7 @@
 
         private TextBox firstNameTextBox;
         private TextBox lastNameTextBox;
-        private TextBox middleNameTtextBox;
+        private TextBox middleNameTextBox;
         private GroupBox groupBox1;
         private RadioButton noGenderRadioButton;
         private RadioButton womanRadioButton;
@@ -421,5 +471,9 @@
         private ToolStripMenuItem createTableToolStripMenuItem;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel toolStripStatusLabel1;
+        private PictureBox registrationPictureBox1;
+        private Label label10;
+        private Button button1;
+        private Button button2;
     }
 }

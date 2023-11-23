@@ -65,6 +65,7 @@
             EnterButton.TabIndex = 1;
             EnterButton.Text = "Вход";
             EnterButton.UseVisualStyleBackColor = false;
+            EnterButton.Click += EnterButton_Click;
             // 
             // ExitButton
             // 
