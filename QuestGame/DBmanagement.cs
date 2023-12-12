@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace QuestGame {
     internal static class DBmanagement {
         public static string connectionString = ConfigurationManager.ConnectionStrings["ConnStringQuest"].ConnectionString;
-
+        public static string pathToFile = @"C:\Users\rust\source\repos\QuestGame\QuestGame\UsersPhoto";
         public static void CreateDatabase() {
             using (SqlConnection conn = new SqlConnection(connectionString)) {
                 conn.Open();
@@ -33,7 +33,7 @@ namespace QuestGame {
                     "City NVARCHAR(50) NOT NULL," +
                     "Phone NVARCHAR(50) NOT NULL," +
                     "Email NVARCHAR(50) NOT NULL," +
-                    "Photo VARBINARY (MAX), " +
+                    "Photo NVARCHAR(50) NOT NULL," +
                     "Password NVARCHAR(50) NOT NULL);";
                 SqlCommand createTable = new SqlCommand(queryTable, conn);
                 createTable.ExecuteNonQuery();
@@ -43,7 +43,7 @@ namespace QuestGame {
         public static void AddUser(Users user) {
             using(SqlConnection conn = new SqlConnection(connectionString)) {
                 conn.Open();
-                string queryAddUser = $"INSERT INTO RegistrationTable VALUES (N'{user.FirstName}', N'{user.LastNname}', N'{user.MiddleName}', N'{user.Gender}', N'{user.BirthdayToUnixTimeStamp()}', N'{user.City}', N'{user.Phone}', N'{user.Email}', '{user.Photo}', N'{user.Password}')";
+                string queryAddUser = $"INSERT INTO RegistrationTable VALUES (N'{user.FirstName}', N'{user.LastNname}', N'{user.MiddleName}', N'{user.Gender}', N'{user.BirthdayToUnixTimeStamp()}', N'{user.City}', N'{user.Phone}', N'{user.Email}', N'{user.Photo}', N'{user.Password}')";
                 //RegistrationForm registration = new RegistrationForm();
                 SqlCommand insertUser = new SqlCommand(queryAddUser, conn);
                 insertUser.ExecuteNonQuery();   
@@ -78,24 +78,10 @@ namespace QuestGame {
                             user.City = reader.GetString(6);
                             user.Phone = reader.GetString(7);
                             user.Email = reader.GetString(8);
-                            user.Password = reader.GetString(9);
+                            user.Photo = reader.GetString(9);
+                            user.Password = reader.GetString(10);
                             users.Add(user);
                         }
-                    }
-                }
-            }
-            return users;
-        }
-
-        public static List<Users> GetCartUserInfo() {
-            List<Users> users = new List<Users>();
-            using( SqlConnection conn = new SqlConnection(connectionString) ) {
-                conn.Open();
-                string queryCartUserInfo = "";
-                SqlCommand selectCartUserInfo = new SqlCommand(queryCartUserInfo, conn);
-                using(SqlDataReader readInfo = selectCartUserInfo.ExecuteReader()) {
-                    if(readInfo.HasRows) {
-                        
                     }
                 }
             }

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,8 +11,12 @@ using System.Windows.Forms;
 
 namespace QuestGame {
     public partial class RegistrationForm : Form {
+        List<string> images;
         public RegistrationForm() {
             InitializeComponent();
+            NewDir();
+            images = new List<string>();
+            LoadPhoto();
         }
 
         private void backFormRegButton_Click(object sender, EventArgs e) {
@@ -45,6 +49,7 @@ namespace QuestGame {
             if (firstNameTextBox.Text.Trim() == "") {
                 MessageBox.Show("Не запольнено имя!");
             }
+            //else if(firstNameTextBox.Text == )
             if (lastNameTextBox.Text.Trim() == "") {
                 MessageBox.Show("Не запольнена фамилия!");
             }
@@ -86,6 +91,7 @@ namespace QuestGame {
             user.City = cityComboBox.Text.Trim();
             user.Phone = phoneNumberMaskedTextBox.Text.Trim();
             user.Email = emailTextBox.Text.Trim() + emailComboBox.Text.Trim();
+            user.Photo = photoLoadTextBox.Text.Trim();
             user.Password = passwordTextBox.Text.Trim();
             if (passwordTextBox.Text == repeatPasswordTextBox.Text) {
                 toolStripStatusLabel1.Text = "Пароль прошел проверку.";
@@ -103,14 +109,33 @@ namespace QuestGame {
             Close();
         }
 
-        private void loadPhotoButton_Click(object sender, EventArgs e) {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog()) {
-                openFileDialog.Filter = "image files (*.jpg, *.jpeg, *.png) | *.jpg, *.jpeg, *.png";
-                openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
-                if (openFileDialog.ShowDialog() == DialogResult.OK) {
-                    registrationPictureBox1.Image = Image.FromFile(openFileDialog.FileName);
-                }
+        private void LoadPhoto() {
+            images.Clear();
+            images = Directory.GetFiles("UserPhotos").ToList();
+            //listBox1.DataSource = images;
+        }
+
+        private void NewDir() {
+            if (!Directory.Exists(Directory.GetCurrentDirectory() + "UserPhotos")) {
+                Directory.CreateDirectory("UserPhotos");
             }
+        }
+
+        private void openPhotoButton_Click(object sender, EventArgs e) {
+            openFileDialog1.Filter = "Изображения|*.jpg;*.gif;*.png";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK) {
+                foreach (var fileName in openFileDialog1.FileNames) {
+                    CopyPhotoToDir(fileName);
+                }
+
+            }
+        }
+
+        private void CopyPhotoToDir(string fileName) {
+            var path = fileName.Split('\\');
+            long currentTime = DateTimeOffset.Now.ToUnixTimeSeconds();
+            File.Copy(fileName, "UserPhotos\\" + currentTime.ToString() + "_" + path[path.Length - 1]);
+            LoadPhoto();
         }
     }
 }

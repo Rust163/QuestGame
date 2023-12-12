@@ -23,7 +23,6 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrationForm));
             firstNameTextBox = new TextBox();
             lastNameTextBox = new TextBox();
             middleNameTextBox = new TextBox();
@@ -35,19 +34,12 @@
             cityComboBox = new ComboBox();
             emailComboBox = new ComboBox();
             emailTextBox = new TextBox();
-            passwordTextBox = new TextBox();
-            repeatPasswordTextBox = new TextBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
             label6 = new Label();
-            label7 = new Label();
-            label8 = new Label();
-            isNewsCheckBox = new CheckBox();
-            RegButton = new Button();
-            backFormRegButton = new Button();
             phoneNumberMaskedTextBox = new MaskedTextBox();
             label9 = new Label();
             menuStrip1 = new MenuStrip();
@@ -57,14 +49,20 @@
             createTableToolStripMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
-            registrationPictureBox1 = new PictureBox();
             label10 = new Label();
-            button1 = new Button();
-            button2 = new Button();
+            passwordTextBox = new TextBox();
+            repeatPasswordTextBox = new TextBox();
+            label7 = new Label();
+            label8 = new Label();
+            isNewsCheckBox = new CheckBox();
+            RegButton = new Button();
+            backFormRegButton = new Button();
+            openPhotoButton = new Button();
+            openFileDialog1 = new OpenFileDialog();
+            photoLoadTextBox = new TextBox();
             groupBox1.SuspendLayout();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)registrationPictureBox1).BeginInit();
             SuspendLayout();
             // 
             // firstNameTextBox
@@ -165,20 +163,6 @@
             emailTextBox.Size = new Size(187, 23);
             emailTextBox.TabIndex = 7;
             // 
-            // passwordTextBox
-            // 
-            passwordTextBox.Location = new Point(38, 681);
-            passwordTextBox.Name = "passwordTextBox";
-            passwordTextBox.Size = new Size(314, 23);
-            passwordTextBox.TabIndex = 8;
-            // 
-            // repeatPasswordTextBox
-            // 
-            repeatPasswordTextBox.Location = new Point(38, 725);
-            repeatPasswordTextBox.Name = "repeatPasswordTextBox";
-            repeatPasswordTextBox.Size = new Size(314, 23);
-            repeatPasswordTextBox.TabIndex = 9;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -232,54 +216,6 @@
             label6.Size = new Size(156, 15);
             label6.TabIndex = 15;
             label6.Text = "Ведите электронную почту";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(38, 663);
-            label7.Name = "label7";
-            label7.Size = new Size(93, 15);
-            label7.TabIndex = 16;
-            label7.Text = "Введите пароль";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(38, 707);
-            label8.Name = "label8";
-            label8.Size = new Size(109, 15);
-            label8.TabIndex = 17;
-            label8.Text = "Повторите пароль";
-            // 
-            // isNewsCheckBox
-            // 
-            isNewsCheckBox.AutoSize = true;
-            isNewsCheckBox.Location = new Point(38, 757);
-            isNewsCheckBox.Name = "isNewsCheckBox";
-            isNewsCheckBox.Size = new Size(127, 19);
-            isNewsCheckBox.TabIndex = 18;
-            isNewsCheckBox.Text = "Получать новости";
-            isNewsCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // RegButton
-            // 
-            RegButton.Location = new Point(38, 794);
-            RegButton.Name = "RegButton";
-            RegButton.Size = new Size(134, 33);
-            RegButton.TabIndex = 19;
-            RegButton.Text = "Зарегестрироваться";
-            RegButton.UseVisualStyleBackColor = true;
-            RegButton.Click += RegButton_Click;
-            // 
-            // backFormRegButton
-            // 
-            backFormRegButton.Location = new Point(218, 794);
-            backFormRegButton.Name = "backFormRegButton";
-            backFormRegButton.Size = new Size(134, 33);
-            backFormRegButton.TabIndex = 20;
-            backFormRegButton.Text = "Отмена";
-            backFormRegButton.UseVisualStyleBackColor = true;
-            backFormRegButton.Click += backFormRegButton_Click;
             // 
             // phoneNumberMaskedTextBox
             // 
@@ -336,7 +272,7 @@
             // statusStrip1
             // 
             statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1 });
-            statusStrip1.Location = new Point(0, 842);
+            statusStrip1.Location = new Point(0, 653);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Size = new Size(394, 22);
             statusStrip1.TabIndex = 24;
@@ -348,17 +284,6 @@
             toolStripStatusLabel1.Size = new Size(118, 17);
             toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
-            // registrationPictureBox1
-            // 
-            registrationPictureBox1.BackColor = Color.WhiteSmoke;
-            registrationPictureBox1.BackgroundImage = (Image)resources.GetObject("registrationPictureBox1.BackgroundImage");
-            registrationPictureBox1.BackgroundImageLayout = ImageLayout.Center;
-            registrationPictureBox1.Location = new Point(38, 440);
-            registrationPictureBox1.Name = "registrationPictureBox1";
-            registrationPictureBox1.Size = new Size(187, 183);
-            registrationPictureBox1.TabIndex = 25;
-            registrationPictureBox1.TabStop = false;
-            // 
             // label10
             // 
             label10.AutoSize = true;
@@ -368,35 +293,98 @@
             label10.TabIndex = 26;
             label10.Text = "Фото";
             // 
-            // button1
+            // passwordTextBox
             // 
-            button1.Location = new Point(38, 629);
-            button1.Name = "button1";
-            button1.Size = new Size(127, 23);
-            button1.TabIndex = 27;
-            button1.Text = "Выбрать фото";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += loadPhotoButton_Click;
+            passwordTextBox.Location = new Point(38, 489);
+            passwordTextBox.Name = "passwordTextBox";
+            passwordTextBox.Size = new Size(314, 23);
+            passwordTextBox.TabIndex = 8;
             // 
-            // button2
+            // repeatPasswordTextBox
             // 
-            button2.Location = new Point(225, 629);
-            button2.Name = "button2";
-            button2.Size = new Size(127, 23);
-            button2.TabIndex = 28;
-            button2.Text = "Загрузить фото";
-            button2.UseVisualStyleBackColor = true;
+            repeatPasswordTextBox.Location = new Point(38, 533);
+            repeatPasswordTextBox.Name = "repeatPasswordTextBox";
+            repeatPasswordTextBox.Size = new Size(314, 23);
+            repeatPasswordTextBox.TabIndex = 9;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(38, 471);
+            label7.Name = "label7";
+            label7.Size = new Size(93, 15);
+            label7.TabIndex = 16;
+            label7.Text = "Введите пароль";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(38, 515);
+            label8.Name = "label8";
+            label8.Size = new Size(109, 15);
+            label8.TabIndex = 17;
+            label8.Text = "Повторите пароль";
+            // 
+            // isNewsCheckBox
+            // 
+            isNewsCheckBox.AutoSize = true;
+            isNewsCheckBox.Location = new Point(38, 565);
+            isNewsCheckBox.Name = "isNewsCheckBox";
+            isNewsCheckBox.Size = new Size(127, 19);
+            isNewsCheckBox.TabIndex = 18;
+            isNewsCheckBox.Text = "Получать новости";
+            isNewsCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // RegButton
+            // 
+            RegButton.Location = new Point(38, 602);
+            RegButton.Name = "RegButton";
+            RegButton.Size = new Size(134, 33);
+            RegButton.TabIndex = 19;
+            RegButton.Text = "Зарегестрироваться";
+            RegButton.UseVisualStyleBackColor = true;
+            RegButton.Click += RegButton_Click;
+            // 
+            // backFormRegButton
+            // 
+            backFormRegButton.Location = new Point(218, 602);
+            backFormRegButton.Name = "backFormRegButton";
+            backFormRegButton.Size = new Size(134, 33);
+            backFormRegButton.TabIndex = 20;
+            backFormRegButton.Text = "Отмена";
+            backFormRegButton.UseVisualStyleBackColor = true;
+            backFormRegButton.Click += backFormRegButton_Click;
+            // 
+            // openPhotoButton
+            // 
+            openPhotoButton.Location = new Point(38, 437);
+            openPhotoButton.Name = "openPhotoButton";
+            openPhotoButton.Size = new Size(127, 23);
+            openPhotoButton.TabIndex = 27;
+            openPhotoButton.Text = "Выбрать фото";
+            openPhotoButton.UseVisualStyleBackColor = true;
+            openPhotoButton.Click += openPhotoButton_Click;
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // photoLoadTextBox
+            // 
+            photoLoadTextBox.Location = new Point(171, 437);
+            photoLoadTextBox.Name = "photoLoadTextBox";
+            photoLoadTextBox.Size = new Size(181, 23);
+            photoLoadTextBox.TabIndex = 28;
             // 
             // RegistrationForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SeaGreen;
-            ClientSize = new Size(394, 864);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            ClientSize = new Size(394, 675);
+            Controls.Add(photoLoadTextBox);
+            Controls.Add(openPhotoButton);
             Controls.Add(label10);
-            Controls.Add(registrationPictureBox1);
             Controls.Add(statusStrip1);
             Controls.Add(label9);
             Controls.Add(phoneNumberMaskedTextBox);
@@ -431,7 +419,6 @@
             menuStrip1.PerformLayout();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)registrationPictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -449,19 +436,12 @@
         private ComboBox cityComboBox;
         private ComboBox emailComboBox;
         private TextBox emailTextBox;
-        private TextBox passwordTextBox;
-        private TextBox repeatPasswordTextBox;
         private Label label1;
         private Label label2;
         private Label label3;
         private Label label4;
         private Label label5;
         private Label label6;
-        private Label label7;
-        private Label label8;
-        private CheckBox isNewsCheckBox;
-        private Button RegButton;
-        private Button backFormRegButton;
         private MaskedTextBox phoneNumberMaskedTextBox;
         private Label label9;
         private MenuStrip menuStrip1;
@@ -471,9 +451,16 @@
         private ToolStripMenuItem createTableToolStripMenuItem;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel toolStripStatusLabel1;
-        private PictureBox registrationPictureBox1;
         private Label label10;
-        private Button button1;
-        private Button button2;
+        private TextBox passwordTextBox;
+        private TextBox repeatPasswordTextBox;
+        private Label label7;
+        private Label label8;
+        private CheckBox isNewsCheckBox;
+        private Button RegButton;
+        private Button backFormRegButton;
+        private Button openPhotoButton;
+        private OpenFileDialog openFileDialog1;
+        private TextBox photoLoadTextBox;
     }
 }

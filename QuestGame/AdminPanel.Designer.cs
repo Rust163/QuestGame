@@ -46,10 +46,10 @@
             cartCityTextBox = new TextBox();
             label4 = new Label();
             label7 = new Label();
-            CartUserPhotoPictureBox = new PictureBox();
+            cartUserPhotoPictureBox = new PictureBox();
             label8 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)CartUserPhotoPictureBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cartUserPhotoPictureBox).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
@@ -60,6 +60,7 @@
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(1034, 668);
             dataGridView1.TabIndex = 0;
+            dataGridView1.CellClick += dataGridView1_CellClick;
             // 
             // searchUserButton
             // 
@@ -97,7 +98,6 @@
             searchUserTextBox.Size = new Size(406, 23);
             searchUserTextBox.TabIndex = 5;
             searchUserTextBox.Text = "Введите ФИО либо Id пользователя";
-            searchUserTextBox.TextChanged += searchUserTextBox_TextChanged_1;
             searchUserTextBox.Enter += searchUserTextBox_Enter;
             searchUserTextBox.Leave += searchUserTextBox_Leave;
             // 
@@ -239,16 +239,16 @@
             label7.TabIndex = 48;
             label7.Text = "Возраст";
             // 
-            // CartUserPhotoPictureBox
+            // cartUserPhotoPictureBox
             // 
-            CartUserPhotoPictureBox.BackColor = SystemColors.ButtonHighlight;
-            CartUserPhotoPictureBox.BackgroundImage = (Image)resources.GetObject("CartUserPhotoPictureBox.BackgroundImage");
-            CartUserPhotoPictureBox.BackgroundImageLayout = ImageLayout.Center;
-            CartUserPhotoPictureBox.Location = new Point(1040, 155);
-            CartUserPhotoPictureBox.Name = "CartUserPhotoPictureBox";
-            CartUserPhotoPictureBox.Size = new Size(314, 281);
-            CartUserPhotoPictureBox.TabIndex = 49;
-            CartUserPhotoPictureBox.TabStop = false;
+            cartUserPhotoPictureBox.BackColor = SystemColors.ButtonHighlight;
+            cartUserPhotoPictureBox.BackgroundImage = (Image)resources.GetObject("cartUserPhotoPictureBox.BackgroundImage");
+            cartUserPhotoPictureBox.BackgroundImageLayout = ImageLayout.Center;
+            cartUserPhotoPictureBox.Location = new Point(1040, 155);
+            cartUserPhotoPictureBox.Name = "cartUserPhotoPictureBox";
+            cartUserPhotoPictureBox.Size = new Size(314, 281);
+            cartUserPhotoPictureBox.TabIndex = 49;
+            cartUserPhotoPictureBox.TabStop = false;
             // 
             // label8
             // 
@@ -265,7 +265,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1364, 823);
             Controls.Add(label8);
-            Controls.Add(CartUserPhotoPictureBox);
+            Controls.Add(cartUserPhotoPictureBox);
             Controls.Add(label7);
             Controls.Add(label4);
             Controls.Add(cartCityTextBox);
@@ -292,7 +292,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AdminPanel";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)CartUserPhotoPictureBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cartUserPhotoPictureBox).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -326,7 +326,7 @@
         private TextBox cartCityTextBox;
         private Label label4;
         private Label label7;
-        private PictureBox CartUserPhotoPictureBox;
+        private PictureBox cartUserPhotoPictureBox;
         private Label label8;
     }
 }
