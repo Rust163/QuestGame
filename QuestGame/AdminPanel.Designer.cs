@@ -90,6 +90,7 @@
             deleteUserButton.TabIndex = 3;
             deleteUserButton.Text = "Удалить пользователя";
             deleteUserButton.UseVisualStyleBackColor = true;
+            deleteUserButton.Click += deleteUserButton_Click;
             // 
             // searchUserTextBox
             // 

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace QuestGame {
     internal static class DBmanagement {
         public static string connectionString = ConfigurationManager.ConnectionStrings["ConnStringQuest"].ConnectionString;
-        public static string pathToFile = @"C:\Users\rust\source\repos\QuestGame\QuestGame\UsersPhoto";
+        //public static string pathToFile = @"C:\Users\rust\source\repos\QuestGame\QuestGame\UsersPhoto";
         public static void CreateDatabase() {
             using (SqlConnection conn = new SqlConnection(connectionString)) {
                 conn.Open();
@@ -50,15 +50,6 @@ namespace QuestGame {
             }
         }
 
-        public static void SearchUser() {
-            using (SqlConnection conn = new SqlConnection(connectionString)) {
-                conn.Open();
-                string querySearchUser = "SELECT FirstName + LastName + MiddleName AS FullName FROM RegistrationTable";
-                SqlCommand searchUser = new SqlCommand(querySearchUser, conn);
-                searchUser.ExecuteNonQuery();
-            }
-        }
-
         public static List<Users> ShowAllUsers() {
             List<Users> users = new List<Users>();
             using(SqlConnection conn = new SqlConnection(connectionString)) {
@@ -87,5 +78,27 @@ namespace QuestGame {
             }
             return users;
         }
+
+        public static void DeletDataUser() {
+            Users user = new Users();
+            using(SqlConnection conn = new SqlConnection(connectionString)) {
+                conn.Open();
+                string delQuery = "DELETE FROM RegistrationTable WHERE Id = @Id";
+                
+                SqlCommand del = new SqlCommand(delQuery, conn);
+                del.Parameters.AddWithValue("@Id", user.Id);
+                del.ExecuteNonQuery();
+            }
+        }
+
+        //public static void CheckLoginAndPassword() {
+        //    Users users = new Users();
+        //    using(SqlConnection con = new SqlConnection(connectionString)) {
+        //        con.Open();
+        //        string logPassQuery = $"SELECT {users.Email}, {users.Password} FROM RegistrationTable";
+        //        SqlCommand logPass = new SqlCommand(logPassQuery, con);
+        //        logPass.ExecuteNonQuery();
+        //    }
+        //}
     }
 }

@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrationForm));
             firstNameTextBox = new TextBox();
             lastNameTextBox = new TextBox();
             middleNameTextBox = new TextBox();
@@ -60,9 +61,17 @@
             openPhotoButton = new Button();
             openFileDialog1 = new OpenFileDialog();
             photoLoadTextBox = new TextBox();
+            showPassPictureBox = new PictureBox();
+            showPassRepeatPictureBox = new PictureBox();
+            hidePassPictureBox = new PictureBox();
+            hidePassRepeatPictureBox = new PictureBox();
             groupBox1.SuspendLayout();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)showPassPictureBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)showPassRepeatPictureBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)hidePassPictureBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)hidePassRepeatPictureBox).BeginInit();
             SuspendLayout();
             // 
             // firstNameTextBox
@@ -255,7 +264,6 @@
             createDataBaseToolStripMenuItem.Name = "createDataBaseToolStripMenuItem";
             createDataBaseToolStripMenuItem.Size = new Size(162, 22);
             createDataBaseToolStripMenuItem.Text = "Create Data Base";
-            createDataBaseToolStripMenuItem.Click += createDataBaseToolStripMenuItem_Click;
             // 
             // toolStripMenuItem1
             // 
@@ -267,7 +275,6 @@
             createTableToolStripMenuItem.Name = "createTableToolStripMenuItem";
             createTableToolStripMenuItem.Size = new Size(162, 22);
             createTableToolStripMenuItem.Text = "Create Table";
-            createTableToolStripMenuItem.Click += createTableToolStripMenuItem_Click;
             // 
             // statusStrip1
             // 
@@ -376,12 +383,64 @@
             photoLoadTextBox.Size = new Size(181, 23);
             photoLoadTextBox.TabIndex = 28;
             // 
+            // showPassPictureBox
+            // 
+            showPassPictureBox.BackColor = Color.Transparent;
+            showPassPictureBox.Image = (Image)resources.GetObject("showPassPictureBox.Image");
+            showPassPictureBox.Location = new Point(354, 489);
+            showPassPictureBox.Name = "showPassPictureBox";
+            showPassPictureBox.Size = new Size(23, 23);
+            showPassPictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
+            showPassPictureBox.TabIndex = 29;
+            showPassPictureBox.TabStop = false;
+            showPassPictureBox.Click += showPassPictureBox_Click;
+            // 
+            // showPassRepeatPictureBox
+            // 
+            showPassRepeatPictureBox.BackColor = Color.Transparent;
+            showPassRepeatPictureBox.Image = (Image)resources.GetObject("showPassRepeatPictureBox.Image");
+            showPassRepeatPictureBox.Location = new Point(354, 533);
+            showPassRepeatPictureBox.Name = "showPassRepeatPictureBox";
+            showPassRepeatPictureBox.Size = new Size(23, 23);
+            showPassRepeatPictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
+            showPassRepeatPictureBox.TabIndex = 30;
+            showPassRepeatPictureBox.TabStop = false;
+            showPassRepeatPictureBox.Click += showPassRepeatPictureBox_Click;
+            // 
+            // hidePassPictureBox
+            // 
+            hidePassPictureBox.BackColor = Color.Transparent;
+            hidePassPictureBox.Image = (Image)resources.GetObject("hidePassPictureBox.Image");
+            hidePassPictureBox.Location = new Point(354, 489);
+            hidePassPictureBox.Name = "hidePassPictureBox";
+            hidePassPictureBox.Size = new Size(23, 23);
+            hidePassPictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
+            hidePassPictureBox.TabIndex = 31;
+            hidePassPictureBox.TabStop = false;
+            hidePassPictureBox.Click += hidePassPictureBox_Click;
+            // 
+            // hidePassRepeatPictureBox
+            // 
+            hidePassRepeatPictureBox.BackColor = Color.Transparent;
+            hidePassRepeatPictureBox.Image = (Image)resources.GetObject("hidePassRepeatPictureBox.Image");
+            hidePassRepeatPictureBox.Location = new Point(354, 533);
+            hidePassRepeatPictureBox.Name = "hidePassRepeatPictureBox";
+            hidePassRepeatPictureBox.Size = new Size(23, 23);
+            hidePassRepeatPictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
+            hidePassRepeatPictureBox.TabIndex = 32;
+            hidePassRepeatPictureBox.TabStop = false;
+            hidePassRepeatPictureBox.Click += hidePassRepeatPictureBox_Click;
+            // 
             // RegistrationForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SeaGreen;
             ClientSize = new Size(394, 675);
+            Controls.Add(hidePassRepeatPictureBox);
+            Controls.Add(hidePassPictureBox);
+            Controls.Add(showPassRepeatPictureBox);
+            Controls.Add(showPassPictureBox);
             Controls.Add(photoLoadTextBox);
             Controls.Add(openPhotoButton);
             Controls.Add(label10);
@@ -410,6 +469,7 @@
             Controls.Add(lastNameTextBox);
             Controls.Add(firstNameTextBox);
             Controls.Add(menuStrip1);
+            Cursor = Cursors.Hand;
             MainMenuStrip = menuStrip1;
             Name = "RegistrationForm";
             Text = "RegistrationForm";
@@ -419,6 +479,10 @@
             menuStrip1.PerformLayout();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)showPassPictureBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)showPassRepeatPictureBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)hidePassPictureBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)hidePassRepeatPictureBox).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -462,5 +526,9 @@
         private Button openPhotoButton;
         private OpenFileDialog openFileDialog1;
         private TextBox photoLoadTextBox;
+        private PictureBox showPassPictureBox;
+        private PictureBox showPassRepeatPictureBox;
+        private PictureBox hidePassPictureBox;
+        private PictureBox hidePassRepeatPictureBox;
     }
 }

@@ -13,6 +13,7 @@ namespace QuestGame {
     public partial class AdminPanel : Form {
         public AdminPanel() {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void searchUserTextBox_Enter(object sender, EventArgs e) {
@@ -27,7 +28,7 @@ namespace QuestGame {
             }
         }
 
-        
+
 
         private void FindUser() {
             for (int i = 0; i < dataGridView1.RowCount; i++) {
@@ -52,7 +53,7 @@ namespace QuestGame {
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e) {
 
-            
+
             try {
                 cartFirstNameTextBox.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
                 cartLastNameTextBox.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
@@ -66,7 +67,8 @@ namespace QuestGame {
                 string path = dataGridView1[9, e.RowIndex].Value.ToString();
                 Bitmap bmp = (Bitmap)Image.FromFile(path);
                 cartUserPhotoPictureBox.Image = bmp;
-            } catch(Exception ex) {
+            }
+            catch (Exception ex) {
                 MessageBox.Show("У этого пользователя не загруженно фото: " + ex.Message);
             }
         }
@@ -77,6 +79,13 @@ namespace QuestGame {
 
         private void exitAdminPanelButton_Click(object sender, EventArgs e) {
             Close();
+        }
+
+        private void deleteUserButton_Click(object sender, EventArgs e) {
+            int indexString = dataGridView1.CurrentRow.Index;
+            if (indexString >= 0) {
+                DBmanagement.DeletDataUser();
+            }
         }
     }
 }

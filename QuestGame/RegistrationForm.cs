@@ -14,6 +14,7 @@ namespace QuestGame {
         List<string> images;
         public RegistrationForm() {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
             NewDir();
             images = new List<string>();
             LoadPhoto();
@@ -45,11 +46,20 @@ namespace QuestGame {
 
         }
 
+        //private void hidePassword() {
+        //    passwordTextBox.PasswordChar = '●';
+        //    showPassPictureBox.Visible = true;
+        //}
+        //
+        //private void hideRepeatPassword() {
+        //    repeatPasswordTextBox.PasswordChar = '●';
+        //    showPassRepeatPictureBox.Visible = true;
+        //}
+
         private void RegButton_Click(object sender, EventArgs e) {
             if (firstNameTextBox.Text.Trim() == "") {
                 MessageBox.Show("Не запольнено имя!");
             }
-            //else if(firstNameTextBox.Text == )
             if (lastNameTextBox.Text.Trim() == "") {
                 MessageBox.Show("Не запольнена фамилия!");
             }
@@ -92,8 +102,8 @@ namespace QuestGame {
             user.Phone = phoneNumberMaskedTextBox.Text.Trim();
             user.Email = emailTextBox.Text.Trim() + emailComboBox.Text.Trim();
             user.Photo = photoLoadTextBox.Text.Trim();
-            user.Password = passwordTextBox.Text.Trim();
-            if (passwordTextBox.Text == repeatPasswordTextBox.Text) {
+            user.Password = CryptPass.cryptPassword(passwordTextBox.Text.Trim());
+            if (user.Password == CryptPass.cryptPassword(repeatPasswordTextBox.Text)) {
                 toolStripStatusLabel1.Text = "Пароль прошел проверку.";
             }
             else {
@@ -107,6 +117,30 @@ namespace QuestGame {
                 MessageBox.Show("Ошибка при регистрации: " + ex.Message);
             }
             Close();
+        }
+
+        private void hidePassPictureBox_Click(object sender, EventArgs e) {
+            passwordTextBox.UseSystemPasswordChar = false;
+            hidePassPictureBox.Visible = false;
+            showPassPictureBox.Visible = true;
+        }
+
+        private void showPassPictureBox_Click(object sender, EventArgs e) {
+            passwordTextBox.UseSystemPasswordChar = true;
+            hidePassPictureBox.Visible = true;
+            showPassPictureBox.Visible = false;
+        }
+
+        private void hidePassRepeatPictureBox_Click(object sender, EventArgs e) {
+            repeatPasswordTextBox.UseSystemPasswordChar = false;
+            hidePassRepeatPictureBox.Visible = false;
+            showPassRepeatPictureBox.Visible = true;
+        }
+
+        private void showPassRepeatPictureBox_Click(object sender, EventArgs e) {
+            repeatPasswordTextBox.UseSystemPasswordChar = true;
+            hidePassRepeatPictureBox.Visible = true;
+            showPassRepeatPictureBox.Visible = false;
         }
 
         private void LoadPhoto() {
