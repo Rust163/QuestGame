@@ -8,11 +8,15 @@ namespace QuestGame {
             StartPosition = FormStartPosition.CenterScreen;
         }
 
+        
+
         private void enterBtn_Click(object sender, EventArgs e) {
-            var loginUser = enterEmailTextBox.Text;
-            var passUser = CryptPass.cryptPassword(enterPasswordTextBox.Text);
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            DataTable table = new DataTable();
+            Users users = new Users();
+            string loginUser = enterEmailTextBox.Text;
+            string passUser = CryptPass.cryptPassword(enterPasswordTextBox.Text);
+            
+            //SqlDataAdapter adapter = new SqlDataAdapter();
+            //DataTable table = new DataTable();
             if (enterEmailTextBox.Text == "") {
                 MessageBox.Show("Вы не ввели логин!");
             }
@@ -24,17 +28,19 @@ namespace QuestGame {
                     conn.Open();
                     string logPassQuery = $"SELECT Email, Password FROM RegistrationTable WHERE Email = '{loginUser}' AND Password = '{passUser}'";
                     SqlCommand checkUserCommand = new SqlCommand(logPassQuery, conn);
-                    adapter.SelectCommand = checkUserCommand;
-                    adapter.Fill(table);
-                    if (table.Rows.Count == 1) {
+                    SqlDataReader reader = checkUserCommand.ExecuteReader();
+                    if (reader.HasRows == true) {
                         MessageBox.Show("Вы успешно авторизовались!");
                         PersonalAccount personalAccount = new PersonalAccount();
                         this.Hide();
                         personalAccount.ShowDialog();
                         this.Show();
                     }
-                    else {
-                        MessageBox.Show("Такого аккунта не существует!", "Вам необходимо зарегистрироваться!");
+                    else if (MessageBox.Show("Зарегистрироваться?", "Такого аккунта не существует!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+                        RegistrationForm reg = new RegistrationForm();
+                        this.Hide();
+                        reg.ShowDialog();
+                        this.Show();
                     }
                 }
             }
@@ -42,8 +48,6 @@ namespace QuestGame {
                 MessageBox.Show("Ошибка входа в аккаунт!" + ex.Message);
             }
         }
-
-
 
         private void cancelBtn_Click(object sender, EventArgs e) {
             Close();

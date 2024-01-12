@@ -5,14 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 
 namespace QuestGame {
-    enum RowState {
-        Existed,
-        New,
-        Modified,
-        ModifiedNew,
-        Deleted
-    }
-
+    
     public partial class AdminPanel : Form {
         public static string connectionString = ConfigurationManager.ConnectionStrings["ConnStringQuest"].ConnectionString;
         public AdminPanel() {
@@ -37,7 +30,6 @@ namespace QuestGame {
             dataGridView1.Columns.Add("Email", "Адрес электронной почты");
             dataGridView1.Columns.Add("Photo", "Фотография");
             dataGridView1.Columns.Add("Password", "Пароль");
-            dataGridView1.Columns.Add("isNew", String.Empty);
         }
 
         public void readSingleRow(DataGridView dgw, IDataRecord read) {
@@ -52,8 +44,7 @@ namespace QuestGame {
                 read.GetString(7),
                 read.GetString(8),
                 read.GetString(9),
-                read.GetString(10),
-                RowState.ModifiedNew
+                read.GetString(10)
                 );
         }
 
@@ -88,15 +79,11 @@ namespace QuestGame {
             if (MessageBox.Show("Вы уверены что хотите удалить пользователя?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
                 int index = dataGridView1.CurrentCell.RowIndex;
                 dataGridView1.Rows[index].Visible = false;
-                if (dataGridView1.Rows[index].Cells[0].Value.ToString() == string.Empty) {
-                    dataGridView1.Rows[index].Cells[11].Value = RowState.Deleted;
-                }
                 using (SqlConnection conn = new SqlConnection(connectionString)) {
                     conn.Open();
                     var rowState = dataGridView1.Rows[index].Cells[0].Value;
                     var id = Convert.ToInt32(dataGridView1.Rows[index].Cells[0].Value);
                     string queryDel = $"DELETE FROM RegistrationTable WHERE Id = {id}";
-
                     SqlCommand deleteUser = new SqlCommand(queryDel, conn);
                     deleteUser.ExecuteNonQuery();
                 }

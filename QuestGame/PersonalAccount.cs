@@ -18,7 +18,7 @@ namespace QuestGame {
             StartPosition = FormStartPosition.CenterScreen;
         }
 
-        private void PersonalAccount_Load(object sender, EventArgs e) {
+        /*private void PersonalAccount_Load(object sender, EventArgs e) {
             Users users = new Users();
             users.FirstName = userAccountFirstNameTextBox.Text;
             users.LastNname = userAccountLastNameTextBox.Text;
@@ -33,6 +33,6 @@ namespace QuestGame {
             } catch(Exception ex) {
                 MessageBox.Show("Ошибка загрузки данных" + ex.Message);
             }
-        }
+        }*/
     }
 }

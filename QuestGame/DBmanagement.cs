@@ -26,7 +26,8 @@ namespace QuestGame {
                     "Phone NVARCHAR(50) NOT NULL," +
                     "Email NVARCHAR(50) NOT NULL," +
                     "Photo NVARCHAR(50) NOT NULL," +
-                    "Password NVARCHAR(50) NOT NULL);";
+                    "Password NVARCHAR(50) NOT NULL," +
+                    "isAdmin BIT);";
                 SqlCommand createTable = new SqlCommand(queryTable, conn);
                 createTable.ExecuteNonQuery();
             }
@@ -35,7 +36,7 @@ namespace QuestGame {
         public static void AddUser(Users user) {
             using(SqlConnection conn = new SqlConnection(connectionString)) {
                 conn.Open();
-                string queryAddUser = $"INSERT INTO RegistrationTable VALUES (N'{user.FirstName}', N'{user.LastNname}', N'{user.MiddleName}', N'{user.Gender}', N'{user.BirthdayToUnixTimeStamp()}', N'{user.City}', N'{user.Phone}', N'{user.Email}', N'{user.Photo}', N'{user.Password}')";
+                string queryAddUser = $"INSERT INTO RegistrationTable VALUES (N'{user.FirstName}', N'{user.LastNname}', N'{user.MiddleName}', N'{user.Gender}', N'{user.BirthdayToUnixTimeStamp()}', N'{user.City}', N'{user.Phone}', N'{user.Email}', N'{user.Photo}', N'{user.Password}', N'{user.isAdmin}')";
                 SqlCommand insertUser = new SqlCommand(queryAddUser, conn);
                 insertUser.ExecuteNonQuery();   
             }

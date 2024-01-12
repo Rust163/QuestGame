@@ -18,6 +18,7 @@ namespace QuestGame {
         public string Photo { get; set; }
         public string Password { get; set; }
         public string repeatPassword { get; set; }
+        public bool isAdmin { get; set; }
 
         public override string ToString() {
             return $"{FirstName} {LastNname} {MiddleName}, пол: {Gender}, дата рождения: {Birthday}, почта: {Email}";
