@@ -1,13 +1,4 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing.Imaging;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿
 
 namespace QuestGame {
     public partial class RegistrationForm : Form {
@@ -45,16 +36,6 @@ namespace QuestGame {
             }
 
         }
-
-        //private void hidePassword() {
-        //    passwordTextBox.PasswordChar = '●';
-        //    showPassPictureBox.Visible = true;
-        //}
-        //
-        //private void hideRepeatPassword() {
-        //    repeatPasswordTextBox.PasswordChar = '●';
-        //    showPassRepeatPictureBox.Visible = true;
-        //}
 
         private void RegButton_Click(object sender, EventArgs e) {
             if (firstNameTextBox.Text.Trim() == "") {
@@ -101,21 +82,18 @@ namespace QuestGame {
             user.City = cityComboBox.Text.Trim();
             user.Phone = phoneNumberMaskedTextBox.Text.Trim();
             user.Email = emailTextBox.Text.Trim() + emailComboBox.Text.Trim();
-            user.Photo = photoLoadTextBox.Text.Trim();
+            user.Photo = photoListBox.Text.Trim();
             user.Password = CryptPass.cryptPassword(passwordTextBox.Text.Trim());
-            if (user.Password == CryptPass.cryptPassword(repeatPasswordTextBox.Text)) {
-                toolStripStatusLabel1.Text = "Пароль прошел проверку.";
+            user.repeatPassword = CryptPass.cryptPassword(repeatPasswordTextBox.Text.Trim());
+            
+            if (user.Password == user.repeatPassword) {
+                DBmanagement.AddUser(user);
+                MessageBox.Show("Вы успешно зарегестрировались!");
             }
             else {
                 MessageBox.Show("Пароли не совпадают.");
             }
-            try {
-                DBmanagement.AddUser(user);
-                MessageBox.Show("Вы успешно зарегестрировались!");
-            }
-            catch (Exception ex) {
-                MessageBox.Show("Ошибка при регистрации: " + ex.Message);
-            }
+            
             Close();
         }
 
@@ -146,7 +124,7 @@ namespace QuestGame {
         private void LoadPhoto() {
             images.Clear();
             images = Directory.GetFiles("UserPhotos").ToList();
-            //listBox1.DataSource = images;
+            photoListBox.DataSource = images;
         }
 
         private void NewDir() {
@@ -161,8 +139,8 @@ namespace QuestGame {
                 foreach (var fileName in openFileDialog1.FileNames) {
                     CopyPhotoToDir(fileName);
                 }
-
             }
+            photoListBox.Text = openFileDialog1.FileName;
         }
 
         private void CopyPhotoToDir(string fileName) {
@@ -170,6 +148,17 @@ namespace QuestGame {
             long currentTime = DateTimeOffset.Now.ToUnixTimeSeconds();
             File.Copy(fileName, "UserPhotos\\" + currentTime.ToString() + "_" + path[path.Length - 1]);
             LoadPhoto();
+        }
+
+        private void showPassCheckBox_CheckedChanged(object sender, EventArgs e) {
+            if (showPassCheckBox.Checked == true) {
+                passwordTextBox.UseSystemPasswordChar = false;
+                repeatPasswordTextBox.UseSystemPasswordChar = false;
+            }
+            else {
+                passwordTextBox.UseSystemPasswordChar = true;
+                repeatPasswordTextBox.UseSystemPasswordChar = true;
+            }
         }
     }
 }

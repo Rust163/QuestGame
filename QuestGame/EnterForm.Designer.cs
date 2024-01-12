@@ -30,6 +30,7 @@
             label1 = new Label();
             label2 = new Label();
             registrationlinkLabel = new LinkLabel();
+            showEnterPassCheckBox = new CheckBox();
             SuspendLayout();
             // 
             // enterBtn
@@ -65,6 +66,7 @@
             enterPasswordTextBox.Name = "enterPasswordTextBox";
             enterPasswordTextBox.Size = new Size(304, 23);
             enterPasswordTextBox.TabIndex = 3;
+            enterPasswordTextBox.UseSystemPasswordChar = true;
             // 
             // label1
             // 
@@ -95,11 +97,23 @@
             registrationlinkLabel.Text = "Нет аккаунта? Зарегистрируйтесь!";
             registrationlinkLabel.LinkClicked += registrationlinkLabel_LinkClicked;
             // 
+            // showEnterPassCheckBox
+            // 
+            showEnterPassCheckBox.AutoSize = true;
+            showEnterPassCheckBox.Location = new Point(94, 116);
+            showEnterPassCheckBox.Name = "showEnterPassCheckBox";
+            showEnterPassCheckBox.Size = new Size(119, 19);
+            showEnterPassCheckBox.TabIndex = 7;
+            showEnterPassCheckBox.Text = "Показать пароль";
+            showEnterPassCheckBox.UseVisualStyleBackColor = true;
+            showEnterPassCheckBox.CheckedChanged += showEnterPassCheckBox_CheckedChanged;
+            // 
             // EnterForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(488, 213);
+            Controls.Add(showEnterPassCheckBox);
             Controls.Add(registrationlinkLabel);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -122,5 +136,6 @@
         private Label label1;
         private Label label2;
         private LinkLabel registrationlinkLabel;
+        private CheckBox showEnterPassCheckBox;
     }
 }

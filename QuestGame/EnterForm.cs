@@ -1,14 +1,5 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace QuestGame {
     public partial class EnterForm : Form {
@@ -19,7 +10,7 @@ namespace QuestGame {
 
         private void enterBtn_Click(object sender, EventArgs e) {
             var loginUser = enterEmailTextBox.Text;
-            var passUser = enterPasswordTextBox.Text;
+            var passUser = CryptPass.cryptPassword(enterPasswordTextBox.Text);
             SqlDataAdapter adapter = new SqlDataAdapter();
             DataTable table = new DataTable();
             if (enterEmailTextBox.Text == "") {
@@ -52,6 +43,8 @@ namespace QuestGame {
             }
         }
 
+
+
         private void cancelBtn_Click(object sender, EventArgs e) {
             Close();
         }
@@ -61,6 +54,15 @@ namespace QuestGame {
             this.Hide();
             reg.ShowDialog();
             this.Show();
+        }
+
+        private void showEnterPassCheckBox_CheckedChanged(object sender, EventArgs e) {
+            if (showEnterPassCheckBox.Checked == true) {
+                enterPasswordTextBox.UseSystemPasswordChar = false;
+            }
+            else {
+                enterPasswordTextBox.UseSystemPasswordChar = true;
+            }
         }
     }
 }

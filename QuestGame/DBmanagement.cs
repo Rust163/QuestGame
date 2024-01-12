@@ -1,16 +1,8 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace QuestGame {
     internal static class DBmanagement {
         public static string connectionString = ConfigurationManager.ConnectionStrings["ConnStringQuest"].ConnectionString;
-        //public static string pathToFile = @"C:\Users\rust\source\repos\QuestGame\QuestGame\UsersPhoto";
         public static void CreateDatabase() {
             using (SqlConnection conn = new SqlConnection(connectionString)) {
                 conn.Open();
@@ -44,61 +36,26 @@ namespace QuestGame {
             using(SqlConnection conn = new SqlConnection(connectionString)) {
                 conn.Open();
                 string queryAddUser = $"INSERT INTO RegistrationTable VALUES (N'{user.FirstName}', N'{user.LastNname}', N'{user.MiddleName}', N'{user.Gender}', N'{user.BirthdayToUnixTimeStamp()}', N'{user.City}', N'{user.Phone}', N'{user.Email}', N'{user.Photo}', N'{user.Password}')";
-                //RegistrationForm registration = new RegistrationForm();
                 SqlCommand insertUser = new SqlCommand(queryAddUser, conn);
                 insertUser.ExecuteNonQuery();   
             }
         }
 
-        public static List<Users> ShowAllUsers() {
-            List<Users> users = new List<Users>();
-            using(SqlConnection conn = new SqlConnection(connectionString)) {
+        public static void ShowPersonalAccountInfo(Users users) {
+            using (SqlConnection conn = new SqlConnection(connectionString)) {
                 conn.Open();
-                string getUsers = "SELECT * FROM RegistrationTable";
-                SqlCommand queryGetUsers = new SqlCommand(getUsers, conn);
-                using(SqlDataReader reader = queryGetUsers.ExecuteReader()) {
-                    if(reader.HasRows) {
-                        while(reader.Read()) {
-                            Users user = new Users();
-                            user.Id = reader.GetInt32(0);
-                            user.FirstName = reader.GetString(1);
-                            user.LastNname = reader.GetString(2);
-                            user.MiddleName = reader.GetString(3);
-                            user.Gender = reader.GetString(4);
-                            user.SetBirthdayfromUTS(reader.GetInt32(5));
-                            user.City = reader.GetString(6);
-                            user.Phone = reader.GetString(7);
-                            user.Email = reader.GetString(8);
-                            user.Photo = reader.GetString(9);
-                            user.Password = reader.GetString(10);
-                            users.Add(user);
-                        }
-                    }
-                }
-            }
-            return users;
-        }
-
-        public static void DeletDataUser() {
-            Users user = new Users();
-            using(SqlConnection conn = new SqlConnection(connectionString)) {
-                conn.Open();
-                string delQuery = "DELETE FROM RegistrationTable WHERE Id = @Id";
-                
-                SqlCommand del = new SqlCommand(delQuery, conn);
-                del.Parameters.AddWithValue("@Id", user.Id);
-                del.ExecuteNonQuery();
+                string queryShowInfoUser = $"SELECT * FROM RegistrationTable " +
+                    $"'{users.FirstName}' AND " +
+                    $"'{users.LastNname}' AND " +
+                    $"'{users.MiddleName}' AND " +
+                    $"'{users.Gender}' AND " +
+                    $"'{users.BirthdayToUnixTimeStamp()}' AND " +
+                    $"'{users.City}' AND " +
+                    $"'{users.Phone}' AND " +
+                    $"'{users.Email}'";
+                SqlCommand showInfoUser = new SqlCommand(queryShowInfoUser, conn);
+                showInfoUser.ExecuteNonQuery();
             }
         }
-
-        //public static void CheckLoginAndPassword() {
-        //    Users users = new Users();
-        //    using(SqlConnection con = new SqlConnection(connectionString)) {
-        //        con.Open();
-        //        string logPassQuery = $"SELECT {users.Email}, {users.Password} FROM RegistrationTable";
-        //        SqlCommand logPass = new SqlCommand(logPassQuery, con);
-        //        logPass.ExecuteNonQuery();
-        //    }
-        //}
     }
 }

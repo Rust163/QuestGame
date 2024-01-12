@@ -60,11 +60,12 @@
             backFormRegButton = new Button();
             openPhotoButton = new Button();
             openFileDialog1 = new OpenFileDialog();
-            photoLoadTextBox = new TextBox();
             showPassPictureBox = new PictureBox();
             showPassRepeatPictureBox = new PictureBox();
             hidePassPictureBox = new PictureBox();
             hidePassRepeatPictureBox = new PictureBox();
+            showPassCheckBox = new CheckBox();
+            photoListBox = new ListBox();
             groupBox1.SuspendLayout();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
@@ -264,6 +265,7 @@
             createDataBaseToolStripMenuItem.Name = "createDataBaseToolStripMenuItem";
             createDataBaseToolStripMenuItem.Size = new Size(162, 22);
             createDataBaseToolStripMenuItem.Text = "Create Data Base";
+            createDataBaseToolStripMenuItem.Click += createDataBaseToolStripMenuItem_Click;
             // 
             // toolStripMenuItem1
             // 
@@ -275,6 +277,7 @@
             createTableToolStripMenuItem.Name = "createTableToolStripMenuItem";
             createTableToolStripMenuItem.Size = new Size(162, 22);
             createTableToolStripMenuItem.Text = "Create Table";
+            createTableToolStripMenuItem.Click += createTableToolStripMenuItem_Click;
             // 
             // statusStrip1
             // 
@@ -306,6 +309,7 @@
             passwordTextBox.Name = "passwordTextBox";
             passwordTextBox.Size = new Size(314, 23);
             passwordTextBox.TabIndex = 8;
+            passwordTextBox.UseSystemPasswordChar = true;
             // 
             // repeatPasswordTextBox
             // 
@@ -313,6 +317,7 @@
             repeatPasswordTextBox.Name = "repeatPasswordTextBox";
             repeatPasswordTextBox.Size = new Size(314, 23);
             repeatPasswordTextBox.TabIndex = 9;
+            repeatPasswordTextBox.UseSystemPasswordChar = true;
             // 
             // label7
             // 
@@ -376,13 +381,6 @@
             // 
             openFileDialog1.FileName = "openFileDialog1";
             // 
-            // photoLoadTextBox
-            // 
-            photoLoadTextBox.Location = new Point(171, 437);
-            photoLoadTextBox.Name = "photoLoadTextBox";
-            photoLoadTextBox.Size = new Size(181, 23);
-            photoLoadTextBox.TabIndex = 28;
-            // 
             // showPassPictureBox
             // 
             showPassPictureBox.BackColor = Color.Transparent;
@@ -431,17 +429,38 @@
             hidePassRepeatPictureBox.TabStop = false;
             hidePassRepeatPictureBox.Click += hidePassRepeatPictureBox_Click;
             // 
+            // showPassCheckBox
+            // 
+            showPassCheckBox.AutoSize = true;
+            showPassCheckBox.Location = new Point(218, 565);
+            showPassCheckBox.Name = "showPassCheckBox";
+            showPassCheckBox.Size = new Size(119, 19);
+            showPassCheckBox.TabIndex = 33;
+            showPassCheckBox.Text = "Показать пароль";
+            showPassCheckBox.UseVisualStyleBackColor = true;
+            showPassCheckBox.CheckedChanged += showPassCheckBox_CheckedChanged;
+            // 
+            // photoListBox
+            // 
+            photoListBox.FormattingEnabled = true;
+            photoListBox.ItemHeight = 15;
+            photoListBox.Location = new Point(171, 441);
+            photoListBox.Name = "photoListBox";
+            photoListBox.Size = new Size(181, 19);
+            photoListBox.TabIndex = 34;
+            // 
             // RegistrationForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SeaGreen;
             ClientSize = new Size(394, 675);
+            Controls.Add(photoListBox);
+            Controls.Add(showPassCheckBox);
             Controls.Add(hidePassRepeatPictureBox);
             Controls.Add(hidePassPictureBox);
             Controls.Add(showPassRepeatPictureBox);
             Controls.Add(showPassPictureBox);
-            Controls.Add(photoLoadTextBox);
             Controls.Add(openPhotoButton);
             Controls.Add(label10);
             Controls.Add(statusStrip1);
@@ -525,10 +544,11 @@
         private Button backFormRegButton;
         private Button openPhotoButton;
         private OpenFileDialog openFileDialog1;
-        private TextBox photoLoadTextBox;
         private PictureBox showPassPictureBox;
         private PictureBox showPassRepeatPictureBox;
         private PictureBox hidePassPictureBox;
         private PictureBox hidePassRepeatPictureBox;
+        private CheckBox showPassCheckBox;
+        private ListBox photoListBox;
     }
 }

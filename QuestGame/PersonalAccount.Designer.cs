@@ -25,15 +25,14 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PersonalAccount));
             userAccountPhotoPictureBox = new PictureBox();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
-            textBox7 = new TextBox();
-            textBox8 = new TextBox();
-            label1 = new Label();
+            userAccountFirstNameTextBox = new TextBox();
+            userAccountLastNameTextBox = new TextBox();
+            userAccountMiddleNameTextBox = new TextBox();
+            userAccountGenderTextBox = new TextBox();
+            userAccountAgeTextBox = new TextBox();
+            userAccountCityTextBox = new TextBox();
+            userAccountPhoneTextBox = new TextBox();
+            userAccountEmailTextBox = new TextBox();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
@@ -66,92 +65,83 @@
             levelHeroTextBox = new TextBox();
             label20 = new Label();
             statusStrip1 = new StatusStrip();
+            userInfoGroupBox = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)userAccountPhotoPictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)heroesPhotoPictureBox).BeginInit();
+            userInfoGroupBox.SuspendLayout();
             SuspendLayout();
             // 
             // userAccountPhotoPictureBox
             // 
             userAccountPhotoPictureBox.BackColor = SystemColors.ButtonFace;
-            userAccountPhotoPictureBox.Location = new Point(12, 48);
+            userAccountPhotoPictureBox.Location = new Point(6, 36);
             userAccountPhotoPictureBox.Name = "userAccountPhotoPictureBox";
             userAccountPhotoPictureBox.Size = new Size(224, 201);
             userAccountPhotoPictureBox.TabIndex = 0;
             userAccountPhotoPictureBox.TabStop = false;
             // 
-            // textBox1
+            // userAccountFirstNameTextBox
             // 
-            textBox1.Location = new Point(12, 270);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(224, 23);
-            textBox1.TabIndex = 1;
+            userAccountFirstNameTextBox.Location = new Point(6, 258);
+            userAccountFirstNameTextBox.Name = "userAccountFirstNameTextBox";
+            userAccountFirstNameTextBox.Size = new Size(224, 23);
+            userAccountFirstNameTextBox.TabIndex = 1;
             // 
-            // textBox2
+            // userAccountLastNameTextBox
             // 
-            textBox2.Location = new Point(12, 314);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(224, 23);
-            textBox2.TabIndex = 2;
+            userAccountLastNameTextBox.Location = new Point(6, 302);
+            userAccountLastNameTextBox.Name = "userAccountLastNameTextBox";
+            userAccountLastNameTextBox.Size = new Size(224, 23);
+            userAccountLastNameTextBox.TabIndex = 2;
             // 
-            // textBox3
+            // userAccountMiddleNameTextBox
             // 
-            textBox3.Location = new Point(12, 358);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(224, 23);
-            textBox3.TabIndex = 3;
+            userAccountMiddleNameTextBox.Location = new Point(6, 346);
+            userAccountMiddleNameTextBox.Name = "userAccountMiddleNameTextBox";
+            userAccountMiddleNameTextBox.Size = new Size(224, 23);
+            userAccountMiddleNameTextBox.TabIndex = 3;
             // 
-            // textBox4
+            // userAccountGenderTextBox
             // 
-            textBox4.Location = new Point(12, 402);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(224, 23);
-            textBox4.TabIndex = 4;
+            userAccountGenderTextBox.Location = new Point(6, 390);
+            userAccountGenderTextBox.Name = "userAccountGenderTextBox";
+            userAccountGenderTextBox.Size = new Size(224, 23);
+            userAccountGenderTextBox.TabIndex = 4;
             // 
-            // textBox5
+            // userAccountAgeTextBox
             // 
-            textBox5.Location = new Point(12, 446);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(224, 23);
-            textBox5.TabIndex = 5;
+            userAccountAgeTextBox.Location = new Point(6, 434);
+            userAccountAgeTextBox.Name = "userAccountAgeTextBox";
+            userAccountAgeTextBox.Size = new Size(224, 23);
+            userAccountAgeTextBox.TabIndex = 5;
             // 
-            // textBox6
+            // userAccountCityTextBox
             // 
-            textBox6.Location = new Point(12, 490);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(224, 23);
-            textBox6.TabIndex = 6;
+            userAccountCityTextBox.Location = new Point(6, 478);
+            userAccountCityTextBox.Name = "userAccountCityTextBox";
+            userAccountCityTextBox.Size = new Size(224, 23);
+            userAccountCityTextBox.TabIndex = 6;
             // 
-            // textBox7
+            // userAccountPhoneTextBox
             // 
-            textBox7.Location = new Point(12, 534);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(224, 23);
-            textBox7.TabIndex = 7;
+            userAccountPhoneTextBox.Location = new Point(6, 522);
+            userAccountPhoneTextBox.Name = "userAccountPhoneTextBox";
+            userAccountPhoneTextBox.Size = new Size(224, 23);
+            userAccountPhoneTextBox.TabIndex = 7;
             // 
-            // textBox8
+            // userAccountEmailTextBox
             // 
-            textBox8.Location = new Point(12, 578);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(224, 23);
-            textBox8.TabIndex = 8;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.ForeColor = SystemColors.ButtonFace;
-            label1.Location = new Point(12, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(128, 15);
-            label1.TabIndex = 9;
-            label1.Text = "Данные пользователя";
+            userAccountEmailTextBox.Location = new Point(6, 566);
+            userAccountEmailTextBox.Name = "userAccountEmailTextBox";
+            userAccountEmailTextBox.Size = new Size(224, 23);
+            userAccountEmailTextBox.TabIndex = 8;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.ForeColor = SystemColors.ButtonFace;
-            label2.Location = new Point(12, 30);
+            label2.Location = new Point(6, 18);
             label2.Name = "label2";
             label2.Size = new Size(35, 15);
             label2.TabIndex = 10;
@@ -162,7 +152,7 @@
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
             label3.ForeColor = SystemColors.ButtonFace;
-            label3.Location = new Point(12, 252);
+            label3.Location = new Point(6, 240);
             label3.Name = "label3";
             label3.Size = new Size(31, 15);
             label3.TabIndex = 11;
@@ -173,7 +163,7 @@
             label4.AutoSize = true;
             label4.BackColor = Color.Transparent;
             label4.ForeColor = SystemColors.ButtonFace;
-            label4.Location = new Point(12, 296);
+            label4.Location = new Point(6, 284);
             label4.Name = "label4";
             label4.Size = new Size(58, 15);
             label4.TabIndex = 12;
@@ -184,7 +174,7 @@
             label5.AutoSize = true;
             label5.BackColor = Color.Transparent;
             label5.ForeColor = SystemColors.ButtonFace;
-            label5.Location = new Point(12, 340);
+            label5.Location = new Point(6, 328);
             label5.Name = "label5";
             label5.Size = new Size(58, 15);
             label5.TabIndex = 13;
@@ -195,7 +185,7 @@
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
             label6.ForeColor = SystemColors.ButtonFace;
-            label6.Location = new Point(12, 384);
+            label6.Location = new Point(6, 372);
             label6.Name = "label6";
             label6.Size = new Size(30, 15);
             label6.TabIndex = 14;
@@ -206,7 +196,7 @@
             label7.AutoSize = true;
             label7.BackColor = Color.Transparent;
             label7.ForeColor = SystemColors.ButtonFace;
-            label7.Location = new Point(12, 428);
+            label7.Location = new Point(6, 416);
             label7.Name = "label7";
             label7.Size = new Size(50, 15);
             label7.TabIndex = 15;
@@ -217,7 +207,7 @@
             label8.AutoSize = true;
             label8.BackColor = Color.Transparent;
             label8.ForeColor = SystemColors.ButtonFace;
-            label8.Location = new Point(12, 472);
+            label8.Location = new Point(6, 460);
             label8.Name = "label8";
             label8.Size = new Size(40, 15);
             label8.TabIndex = 16;
@@ -228,7 +218,7 @@
             label9.AutoSize = true;
             label9.BackColor = Color.Transparent;
             label9.ForeColor = SystemColors.ButtonFace;
-            label9.Location = new Point(12, 516);
+            label9.Location = new Point(6, 504);
             label9.Name = "label9";
             label9.Size = new Size(101, 15);
             label9.TabIndex = 17;
@@ -239,7 +229,7 @@
             label10.AutoSize = true;
             label10.BackColor = Color.Transparent;
             label10.ForeColor = SystemColors.ButtonFace;
-            label10.Location = new Point(12, 560);
+            label10.Location = new Point(6, 548);
             label10.Name = "label10";
             label10.Size = new Size(41, 15);
             label10.TabIndex = 18;
@@ -455,6 +445,35 @@
             statusStrip1.TabIndex = 41;
             statusStrip1.Text = "statusStrip1";
             // 
+            // userInfoGroupBox
+            // 
+            userInfoGroupBox.BackColor = Color.Transparent;
+            userInfoGroupBox.Controls.Add(label2);
+            userInfoGroupBox.Controls.Add(userAccountPhotoPictureBox);
+            userInfoGroupBox.Controls.Add(userAccountFirstNameTextBox);
+            userInfoGroupBox.Controls.Add(userAccountLastNameTextBox);
+            userInfoGroupBox.Controls.Add(userAccountMiddleNameTextBox);
+            userInfoGroupBox.Controls.Add(userAccountGenderTextBox);
+            userInfoGroupBox.Controls.Add(userAccountAgeTextBox);
+            userInfoGroupBox.Controls.Add(userAccountCityTextBox);
+            userInfoGroupBox.Controls.Add(userAccountPhoneTextBox);
+            userInfoGroupBox.Controls.Add(userAccountEmailTextBox);
+            userInfoGroupBox.Controls.Add(label3);
+            userInfoGroupBox.Controls.Add(label4);
+            userInfoGroupBox.Controls.Add(label5);
+            userInfoGroupBox.Controls.Add(label6);
+            userInfoGroupBox.Controls.Add(label7);
+            userInfoGroupBox.Controls.Add(label8);
+            userInfoGroupBox.Controls.Add(label9);
+            userInfoGroupBox.Controls.Add(label10);
+            userInfoGroupBox.ForeColor = SystemColors.ButtonFace;
+            userInfoGroupBox.Location = new Point(12, 12);
+            userInfoGroupBox.Name = "userInfoGroupBox";
+            userInfoGroupBox.Size = new Size(237, 598);
+            userInfoGroupBox.TabIndex = 42;
+            userInfoGroupBox.TabStop = false;
+            userInfoGroupBox.Text = "Данные пользователя";
+            // 
             // PersonalAccount
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -463,6 +482,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(957, 691);
+            Controls.Add(userInfoGroupBox);
             Controls.Add(statusStrip1);
             Controls.Add(label20);
             Controls.Add(levelHeroTextBox);
@@ -486,29 +506,13 @@
             Controls.Add(nameHeroTextBox);
             Controls.Add(heroesPhotoPictureBox);
             Controls.Add(button1);
-            Controls.Add(label10);
-            Controls.Add(label9);
-            Controls.Add(label8);
-            Controls.Add(label7);
-            Controls.Add(label6);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(textBox8);
-            Controls.Add(textBox7);
-            Controls.Add(textBox6);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
-            Controls.Add(userAccountPhotoPictureBox);
             Name = "PersonalAccount";
             Text = "PersonalAccount";
+            Load += PersonalAccount_Load;
             ((System.ComponentModel.ISupportInitialize)userAccountPhotoPictureBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)heroesPhotoPictureBox).EndInit();
+            userInfoGroupBox.ResumeLayout(false);
+            userInfoGroupBox.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -516,15 +520,14 @@
         #endregion
 
         private PictureBox userAccountPhotoPictureBox;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private TextBox textBox6;
-        private TextBox textBox7;
-        private TextBox textBox8;
-        private Label label1;
+        private TextBox userAccountFirstNameTextBox;
+        private TextBox userAccountLastNameTextBox;
+        private TextBox userAccountMiddleNameTextBox;
+        private TextBox userAccountGenderTextBox;
+        private TextBox userAccountAgeTextBox;
+        private TextBox userAccountCityTextBox;
+        private TextBox userAccountPhoneTextBox;
+        private TextBox userAccountEmailTextBox;
         private Label label2;
         private Label label3;
         private Label label4;
@@ -557,5 +560,6 @@
         private TextBox levelHeroTextBox;
         private Label label20;
         private StatusStrip statusStrip1;
+        private GroupBox userInfoGroupBox;
     }
 }
